@@ -46,7 +46,7 @@ for i in range(1, 4):
     soup = BeautifulSoup(response.content, 'html.parser')
     
     # Results from soup:
-    results = soup.find('table', {'class': 'table-scrollable'}).find('tbody').find_all('tr')
+    results = soup.find('tbody').find_all('tr')
     
     # Append items:
     for result in results:
