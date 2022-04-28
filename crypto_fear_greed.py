@@ -11,7 +11,6 @@ import streamlit as st
 import datetime
 import plotly.express as px
 
-
 st.write("""
 # Cryptocurrency Fear & Greed Index
 """)
@@ -59,6 +58,19 @@ if date > date.today():
 else:
     df = fg_crypto_df[fg_crypto_df.Date > date.strftime("%Y-%m-%d")]
 
+# Remove indices:
+# CSS to inject contained in a string
+# Reference: https://docs.streamlit.io/knowledge-base/using-streamlit/hide-row-indices-displaying-dataframe
+hide_table_row_index = """
+            <style>
+            tbody th {display:none}
+            .blank {display:none}
+            </style>
+            """
+
+# Inject CSS with Markdown
+st.markdown(hide_table_row_index, unsafe_allow_html=True)
+
 
 ## Today's Crypto Fear & Greed Index Value
 
@@ -68,7 +80,6 @@ else:
 
 pick_color = st.sidebar.color_picker(label = "Plot Colour", value = "#286EE0")
 
-st.markdown('#')
 
 side_df = df.copy()
 
@@ -78,7 +89,7 @@ side_df.set_index("Date")
 
 st.sidebar.title("Last 5 Days - Crypto Fear & Greed Index")
 
-st.sidebar.dataframe(side_df.head()[['Date', 'Value']])
+st.sidebar.table(side_df.head()[['Date', 'Value', 'Label']])
 
 ## Plot On Main Area
 
