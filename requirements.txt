@@ -3,3 +3,4 @@ requests
 streamlit
 plotly
 datetime
+streamlit_option_menu
