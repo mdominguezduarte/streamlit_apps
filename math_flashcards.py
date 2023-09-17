@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Mon Apr 25 11:40:25 2022
 
-@author: DKu_7
 """
 
 # Math Flashcards App
